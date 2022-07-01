@@ -1,7 +1,6 @@
-version: '3.8'
+version: "3.8"
 
 services:
-
   nodeapp:
     container_name: nodeapp
     restart: always
@@ -15,11 +14,11 @@ services:
     depends_on:
       - mongodb
     environment:
-      - DB_URI='mongodb://localhost:27017/vote'
+      - DB_URI='mongodb://localhost:27017/user'
       - JWT_SECRET='secret'
       - PORT=3000
 
-  mongodb: 
+  mongodb:
     container_name: mongodb
     image: mongo:4.4.13
     volumes:
@@ -37,7 +36,7 @@ services:
       - ./data/certbot/www:/var/www/certbot
     ports:
       - "3001:3001"
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
     depends_on:
       - nodeapp
 
