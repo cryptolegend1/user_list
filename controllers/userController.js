@@ -13,7 +13,6 @@ exports.add = function (req, res, next) {
 };
 
 exports.getlist = function (req, res, next) {
-  console.log("ASDF");
   User.find({}, (err, users) => {
     res.json(users);
   });
